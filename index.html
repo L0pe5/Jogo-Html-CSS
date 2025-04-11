@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo HTML & CSS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Jogo de Aprendizado: HTML & CSS</h1>
+  <h2 id="nivel-titulo"></h2>
+  <p id="pontos">Pontos: 10</p>
+  <p id="pergunta"></p>
+  <div class="textarea-container">
+    <textarea id="codigo" placeholder="Digite seu código aqui..."></textarea>
+    <span id="feedback-icon" class="feedback-icon"></span>
+  </div>  
+  <div class="botoes">
+    <button id="verificar-btn" onclick="verificar()">Verificar</button>
+    <button id="mostrar-dica" onclick="mostrarDica()">Mostrar Dica</button>
+    <button id="proximo-nivel" onclick="proximoNivel()">Próximo Nível</button>
+    <button id="reiniciar-btn" onclick="reiniciarJogo()">🔄 Reiniciar</button>
+  </div>  
+  <p id="dica"></p>
+  <p id="progresso"></p>
+  <!--<div id="resultado"></div> -->
+  <div class="fake-browser">
+    <div class="browser-bar">
+      <span class="circle red"></span>
+      <span class="circle yellow"></span>
+      <span class="circle green"></span>
+    </div>
+    <div id="preview"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
