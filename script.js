@@ -1,5 +1,6 @@
-let nivelAtual = 0;
-let pontos = 10;
+let nivelAtual = parseInt(localStorage.getItem('nivelAtual')) || 0;
+let pontos = parseInt(localStorage.getItem('pontos'));
+if (isNaN(pontos)) pontos = 10;
 let nivelConcluido = false;
 
 const niveis = [
