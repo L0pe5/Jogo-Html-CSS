@@ -9,7 +9,7 @@ const categoryIcons = {
 };
 
 const niveis = [
-  // Níveis 1-5 (originais)
+
   {
     titulo: "Nível 1",
     pergunta: "Use uma tag de título apropriada para mostrar a frase 'Olá Mundo' com destaque.",
@@ -40,7 +40,7 @@ const niveis = [
     resposta: /<img src=["']logo\.png["'] alt=["']Logo["']\s*\/>/i,
     dica: "As imagens precisam de um texto alternativo por acessibilidade."
   },
-  // Debug 1 (após 5 níveis)
+
   {
     tipo: "debug",
     titulo: "Debug 1 - Tags Básicas",
@@ -50,7 +50,7 @@ const niveis = [
     dica: "Verifique: 1) Aspas na classe, 2) Tag h1 fechando com h2, 3) Tag p não fechada",
     erros: 3
   },
-  // Níveis 6-10 (originais)
+
   {
     titulo: "Nível 6",
     pergunta: "Adicione um texto na página e aplique um estilo para que ele apareça em vermelho.",
@@ -81,7 +81,7 @@ const niveis = [
     resposta: /<a href=["']https:\/\/www\.google\.com["']>Ir para o Google<\/a>/i,
     dica: "Use a tag de hyperlink com um endereço válido."
   },
-  // Debug 2 (após 10 níveis)
+
   {
     tipo: "debug",
     titulo: "Debug 2 - CSS Básico",
@@ -128,7 +128,7 @@ const niveis = [
     resposta: /<style>.*?p\s*{[^}]*background-color:\s*yellow;[^}]*}.*?<\/style>.*?<p>.*?<\/p>/is,
     dica: "Você já usou essa propriedade antes com outras cores."
   },
-  // Debug 3 (após 15 níveis)
+
   {
     tipo: "debug",
     titulo: "Debug 3 - Formulário",
@@ -146,7 +146,7 @@ const niveis = [
     dica: "Verifique: 1) Aspas, 2) Atributos faltando, 3) Valores incorretos",
     erros: 5
   },
-  // Níveis 16-20 (originais)
+
   {
     titulo: "Nível 16",
     pergunta: "Crie um input do tipo email dentro de um formulário.",
@@ -224,7 +224,6 @@ function carregarDebug() {
   document.getElementById("feedback-icon").textContent = "";
   nivelConcluido = false;
   
-  // Mostra contador de erros
   document.getElementById("debug-counter").style.display = "block";
   document.getElementById("debug-counter").textContent = `Erros: ${nivel.erros}`;
   
@@ -236,7 +235,6 @@ function carregarDebug() {
 function getCategoryIcon(regex) {
   const str = regex.toString();
   
-  // Verifica primeiro se é um nível de debug
   if (niveis[nivelAtual].tipo === "debug") {
     return "🔍";
   }
@@ -274,7 +272,6 @@ function verificar() {
   const codigoNormalizado = normalizarCodigo(codigo);
 
   if (nivel.tipo === "debug") {
-    // Para desafios de debug
     const respostaNormalizada = normalizarCodigo(nivel.resposta);
     if (codigoNormalizado === respostaNormalizada) {
       respostaCorreta();
@@ -282,7 +279,6 @@ function verificar() {
       respostaIncorreta();
     }
   } else {
-    // Para questões normais
     const regexStr = nivel.resposta.toString()
       .replace(/^\//, '')
       .replace(/\/[a-z]*$/, '')
@@ -333,7 +329,7 @@ function verificarDebug() {
   const feedbackIcon = document.getElementById("feedback-icon");
   const codigoNormalizado = codigo.replace(/\s+/g, ' ').trim();
   const respostaNormalizada = nivel.resposta.replace(/\s+/g, ' ').trim();
-  // Adicione no início da função verificarDebug()
+  //função verificarDebug()
 console.log("Código digitado:", JSON.stringify(codigo));
 console.log("Resposta esperada:", JSON.stringify(nivel.resposta));
 console.log("São iguais?", codigo === nivel.resposta);

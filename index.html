@@ -11,7 +11,7 @@
   <div class="theme-toggle">🌓</div>
   <h1>Jogo de Aprendizado: HTML & CSS</h1>
   
-  <!-- Adicione este elemento para debug -->
+ 
   <div id="debug-info" style="display:none; font-family:monospace;"></div>
   
   <h2 id="nivel-titulo"></h2>
@@ -36,7 +36,7 @@
     <button id="mostrar-dica" onclick="mostrarDica()">Mostrar Dica</button>
     <button id="proximo-nivel" onclick="proximoNivel()">Próximo Nível</button>
     <button id="reiniciar-btn" onclick="reiniciarJogo()">🔄 Reiniciar</button>
-    <!-- Botão de debug (opcional) -->
+
     <button onclick="debugComparacao()" style="background-color:#6c757d;">Debug</button>
   </div>
   
@@ -64,7 +64,6 @@
  
   <script src="jogo.js"></script>
   <script>
-    // Função de debug auxiliar
     function debugComparacao() {
       const codigo = document.getElementById("codigo").value;
       const nivel = niveis[nivelAtual];
