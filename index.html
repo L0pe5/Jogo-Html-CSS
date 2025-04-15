@@ -1,29 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jogo HTML & CSS</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/diff/5.0.0/diff.min.js"></script>
 </head>
 <body>
+  <div class="theme-toggle">🌓</div>
   <h1>Jogo de Aprendizado: HTML & CSS</h1>
+  
+  <!-- Adicione este elemento para debug -->
+  <div id="debug-info" style="display:none; font-family:monospace;"></div>
+  
   <h2 id="nivel-titulo"></h2>
   <p id="pontos">Pontos: 10</p>
+  
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+  
   <p id="pergunta"></p>
+  
   <div class="textarea-container">
+    <div id="debug-counter" class="debug-counter" style="display: none;">Erros: 0/X</div>
     <textarea id="codigo" placeholder="Digite seu código aqui..."></textarea>
     <span id="feedback-icon" class="feedback-icon"></span>
-  </div>  
+  </div>
+  
+  <div id="debug-hint" class="debug-hint"></div>
+  
   <div class="botoes">
     <button id="verificar-btn" onclick="verificar()">Verificar</button>
     <button id="mostrar-dica" onclick="mostrarDica()">Mostrar Dica</button>
     <button id="proximo-nivel" onclick="proximoNivel()">Próximo Nível</button>
     <button id="reiniciar-btn" onclick="reiniciarJogo()">🔄 Reiniciar</button>
-  </div>  
+    <!-- Botão de debug (opcional) -->
+    <button onclick="debugComparacao()" style="background-color:#6c757d;">Debug</button>
+  </div>
+  
   <p id="dica"></p>
   <p id="progresso"></p>
-  <!--<div id="resultado"></div> -->
+  
   <div class="fake-browser">
     <div class="browser-bar">
       <span class="circle red"></span>
@@ -32,7 +51,41 @@
     </div>
     <div id="preview"></div>
   </div>
-
-  <script src="script.js"></script>
+  
+  <div class="game-over" id="game-over">
+    <h2>Game Over!</h2>
+    <p>Você perdeu todos os seus pontos.</p>
+    <div class="game-over-options">
+      <button onclick="voltarDezNiveis()">Voltar 10 níveis</button>
+      <button onclick="reiniciarJogo()">Reiniciar Jogo</button>
+    </div>
+  </div>
+  
+ 
+  <script src="jogo.js"></script>
+  <script>
+    // Função de debug auxiliar
+    function debugComparacao() {
+      const codigo = document.getElementById("codigo").value;
+      const nivel = niveis[nivelAtual];
+      const normalizado = normalizarCodigo(codigo);
+      
+      console.log("Código digitado:", codigo);
+      console.log("Normalizado:", normalizado);
+      
+      if (nivel.tipo === "debug") {
+        const respostaNormalizada = normalizarCodigo(nivel.resposta);
+        console.log("Resposta esperada:", nivel.resposta);
+        console.log("Normalizada:", respostaNormalizada);
+        console.log("São iguais?", normalizado === respostaNormalizada);
+      } else {
+        const regexStr = nivel.resposta.toString()
+          .replace(/^\//, '')
+          .replace(/\/[a-z]*$/, '');
+        console.log("Regex pattern:", regexStr);
+        console.log("Corresponde?", new RegExp(regexStr, 'i').test(normalizado));
+      }
+    }
+  </script>
 </body>
 </html>
